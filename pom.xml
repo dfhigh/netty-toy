@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.mib</groupId>
+    <artifactId>netty-toy</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>netty-rpc-server</module>
+        <module>netty-rpc-client</module>
+        <module>netty-rpc-interface</module>
+    </modules>
+    <name>netty-toy</name>
+
+    <properties>
+        <guava.version>27.0-jre</guava.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <lombok.version>1.16.20</lombok.version>
+        <jackson.version>2.9.8</jackson.version>
+        <lang3.version>3.7</lang3.version>
+        <mib.version>1.0-SNAPSHOT</mib.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <configuration>
+                            <rules><dependencyConvergence /></rules>
+                        </configuration>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>5.0.0.RELEASE</version>
+            </extension>
+        </extensions>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>bim360-docs-maven-snapshot</id>
+            <url>s3://bim360-docs-maven/snapshot</url>
+        </repository>
+        <repository>
+            <id>bim360-docs-maven-release</id>
+            <url>s3://bim360-docs-maven/release</url>
+        </repository>
+    </repositories>
+
+</project>
